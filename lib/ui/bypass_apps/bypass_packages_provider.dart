@@ -3,9 +3,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class BypassPackagesNotifier extends Notifier<Future<List<String>>> {
   @override
-  Future<List<String>> build() {
+  Future<List<String>> build() async {
     // Load initial state asynchronously
-    return _loadFromPreferences();
+    state = _loadFromPreferences();
+    return await state;
   }
 
   static const String _prefsKey = 'bypass_packages';
