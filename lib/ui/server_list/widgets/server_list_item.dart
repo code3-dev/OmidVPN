@@ -67,7 +67,7 @@ class ServerListItem extends ConsumerWidget {
             borderRadius: BorderRadius.circular(12),
           ),
           child: Text(
-            '${server.speed} ${lang.mbps}',
+            server.countryShort,
             style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,

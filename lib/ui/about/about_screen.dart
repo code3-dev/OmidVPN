@@ -119,7 +119,7 @@ class AboutScreen extends ConsumerWidget {
             // Copyright
             Text(
               '© ${DateTime.now().year} Hossein Pira. All rights reserved.',
-              style: TextStyle(fontSize: 12, color: Colors.grey),
+              style: TextStyle(fontSize: 12, color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6) ?? Colors.grey),
             ),
           ],
         ),

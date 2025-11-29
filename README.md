@@ -22,7 +22,7 @@
 
 ## 🌐 About
 
-OmidVPN is a simple, lightweight, and secure OpenVPN client for Android that allows users to connect to public VPN servers easily. With a clean and intuitive interface, OmidVPN makes it effortless to browse the internet privately and securely.
+OmidVPN is a simple, lightweight, and secure OpenVPN client for Android that allows users to connect to public VPN servers from https://www.vpngate.net/. With a clean and intuitive interface, OmidVPN makes it effortless to browse the internet privately and securely.
 
 ## ✨ Features
 
@@ -33,6 +33,7 @@ OmidVPN is a simple, lightweight, and secure OpenVPN client for Android that all
 - 🚫 **No Tracking**: Respects your privacy with zero data collection
 - 📱 **Modern UI**: Clean and intuitive user interface built with Flutter
 - 🎯 **Easy to Use**: Simple one-tap connection to VPN servers
+- 📱 **App Bypass**: Select specific apps to exclude from VPN routing
 
 ## 🚀 Installation
 
@@ -48,6 +49,13 @@ OmidVPN is a simple, lightweight, and secure OpenVPN client for Android that all
 3. Select your desired server location
 4. Tap the large circular button to connect/disconnect
 5. Enjoy secure and private browsing!
+
+## 📱 Bypass Apps Feature
+
+1. Go to Settings > Bypass Apps
+2. Select the apps you want to exclude from VPN routing
+3. Save your selection
+4. When connected to VPN, selected apps will use your regular internet connection
 
 ## 🔐 Privacy Policy
 
@@ -68,7 +76,7 @@ OmidVPN respects your privacy. We do not:
 - [x] Add settings page
 - [x] Add privacy policy
 - [ ] Auto connect (in future)
-- [ ] Bypass apps (in future)
+- [x] Bypass apps - Select apps to exclude from VPN routing
 - [ ] Select API proxy (in future)
 
 ## 👤 Author
@@ -85,7 +93,7 @@ Contributions are welcome! Feel free to submit pull requests or open issues for 
 
 ## 🙏 Acknowledgments
 
-- Thanks to all the public VPN server providers
+- VPN servers provided by [VPN Gate](https://www.vpngate.net/)
 - Built with [Flutter](https://flutter.dev/)
 - Uses [OpenVPN for Android](https://github.com/schwabe/ics-openvpn)
 

@@ -60,10 +60,13 @@ mixin HomeHandler {
       }
     }
 
-    // Connect to VPN
+    // Get bypass packages
+    final bypassPackages = ref.read(bypassPackagesProvider);
+    
+    // Connect to VPN with bypass packages
     (await ref.read(
       openvpnServiceProvider.future,
-    )).connectWithServerInfo(serverInfo: server);
+    )).connectWithServerInfo(serverInfo: server, bypassPackages: bypassPackages);
   }
 
   void disconnectUsecase(WidgetRef ref) async {

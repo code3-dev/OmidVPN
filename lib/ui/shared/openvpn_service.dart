@@ -170,13 +170,13 @@ class OpenvpnService implements VpnService {
   }
 
   @override
-  void connect({required String serverName, required String config}) {
+  void connect({required String serverName, required String config, List<String>? bypassPackages}) {
     openvpn.connect(
       _configPatches(config),
       serverName,
       // username: username,
       // password: password,
-      // bypassPackages: [],
+      bypassPackages: bypassPackages ?? [],
       certIsRequired: true,
     );
 
@@ -185,13 +185,13 @@ class OpenvpnService implements VpnService {
   }
 
   // Connect with full server info
-  void connectWithServerInfo({required ServerInfo serverInfo}) {
+  void connectWithServerInfo({required ServerInfo serverInfo, List<String>? bypassPackages}) {
     openvpn.connect(
       _configPatches(serverInfo.vpnConfig),
       serverInfo.hostName,
       // username: username,
       // password: password,
-      // bypassPackages: [],
+      bypassPackages: bypassPackages ?? [],
       certIsRequired: true,
     );
 

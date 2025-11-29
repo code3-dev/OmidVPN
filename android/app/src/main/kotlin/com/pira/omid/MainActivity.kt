@@ -23,15 +23,6 @@ class MainActivity: FlutterActivity() {
         super.configureFlutterEngine(flutterEngine)
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler { call, result ->
             when (call.method) {
-                "startNotificationService" -> {
-                    val serverName = call.argument<String>("serverName") ?: "Unknown Server"
-                    VpnNotificationService.startService(this, serverName)
-                    result.success(null)
-                }
-                "stopNotificationService" -> {
-                    VpnNotificationService.stopService(this)
-                    result.success(null)
-                }
                 "checkNotificationPermission" -> {
                     result.success(checkNotificationPermission())
                 }
@@ -45,6 +36,9 @@ class MainActivity: FlutterActivity() {
                 else -> result.notImplemented()
             }
         }
+        
+        // Register the AppList method channel
+        AppListMethodChannel.registerWith(flutterEngine, this)
         
         // Register broadcast receiver for VPN disconnect
         disconnectReceiver = object : BroadcastReceiver() {

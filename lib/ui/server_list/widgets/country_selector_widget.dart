@@ -13,14 +13,14 @@ class CountrySelectorWidget extends ConsumerWidget {
 
     return serverList.when(
       data: (servers) {
-        final countries = <String>{};
+        final countryMap = <String, String>{};
         for (final server in servers) {
-          if (server.countryShort.isNotEmpty) {
-            countries.add(server.countryShort);
+          if (server.countryShort.isNotEmpty && server.countryLong.isNotEmpty) {
+            countryMap[server.countryShort] = server.countryLong;
           }
         }
 
-        final sortedCountries = countries.toList()..sort();
+        final sortedCountries = countryMap.keys.toList()..sort();
 
         return Container(
           height: 60,
@@ -41,15 +41,16 @@ class CountrySelectorWidget extends ConsumerWidget {
                   },
                 );
               }
-              final country = sortedCountries[index - 1];
+              final countryShort = sortedCountries[index - 1];
+              final countryLong = countryMap[countryShort] ?? countryShort;
               return FilterChip(
-                label: Text(country),
+                label: Text(countryLong),
                 selected:
-                    selectedCountry?.toLowerCase() == country.toLowerCase(),
+                    selectedCountry?.toLowerCase() == countryShort.toLowerCase(),
                 onSelected: (_) {
                   ref
                       .read(serverListAsyncNotifier.notifier)
-                      .filterByCountry(country);
+                      .filterByCountry(countryShort);
                 },
               );
             },

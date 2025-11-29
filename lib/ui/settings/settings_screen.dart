@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:omidvpn/api/api/api.dart';
 import 'package:omidvpn/ui/about/about_screen.dart';
+import 'package:omidvpn/ui/bypass_apps/bypass_apps_screen.dart';
 import 'package:omidvpn/ui/privacy/privacy_screen.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'dart:io' show exit;
@@ -81,6 +82,26 @@ class SettingsScreen extends ConsumerWidget {
               },
             ),
             Divider(),
+            ListTile(
+              title: Text('Bypass Apps'),
+              subtitle: Text('Select apps to exclude from VPN'),
+              leading: Icon(Icons.apps),
+              trailing: Icon(Icons.arrow_forward_ios),
+              onTap: () async {
+                final result = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const BypassAppsScreen(),
+                  ),
+                );
+                
+                if (result != null && result is List<String>) {
+                  // Handle the selected bypass packages
+                  // This would typically be stored in shared preferences or passed to the VPN connection
+                  debugPrint('Selected bypass packages: $result');
+                }
+              },
+            ),
             ListTile(
               title: Text(lang.privacyPolicy),
               leading: Icon(Icons.privacy_tip),
